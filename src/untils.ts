@@ -21,23 +21,17 @@ export function parseComponentPath(comPath: string, paths: IApi['paths']) {
  * @param routeFileName 
  * @returns 
  */
- export function getRouteConfigPaths(comPath: string, routeFileName: string,exts:string[]) {
+ export function getRouteConfigPaths(comPath: string, routeFileName: string) {
     const pathInfo = parse(comPath);
     const { dir, name } = pathInfo;
-    let allPaths: string[] = [];
+    const allPaths: string[] = [];
     if (name === 'index') {
       const routePath = join(dir, routeFileName);
-      const routeFiles = exts.map(function(ext){
-        return `${routePath}.${ext}`
-      })
-      allPaths = allPaths.concat(routeFiles);
+      allPaths.push(routePath)
     }
   
     const routePath = join(dir, `${name}.${routeFileName}`);
-    const routeFiles = exts.map(function(ext){
-      return `${routePath}.${ext}`
-    })
-    allPaths = allPaths.concat(routeFiles);
+    allPaths.push(routePath)
     return allPaths;
   }
 

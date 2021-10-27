@@ -2,20 +2,17 @@
 // - https://umijs.org/plugins/api
 import { IApi } from '@umijs/types';
 import {parseComponentPath,routesMap,getRouteConfigPaths} from "./untils"
-import {accessSync} from "fs"
 
 export default function (api: IApi) {
   api.describe({
     key: 'separateRoute',
     config: {
       default:{
-        fileName:"route",
-        extNames:["ts","js","json"]
+        fileName:"route"
       },
       schema:function(joi) {
         return joi.object({
-          fileName:joi.string(),
-          extNames:joi.array().items(joi.string)
+          fileName:joi.string()
         });
       },
     },
@@ -40,15 +37,10 @@ export default function (api: IApi) {
       }
 
       const absPath = parseComponentPath(comPath,api.paths);
-      const allPaths = getRouteConfigPaths(absPath,fileName,extNames);
+      const allPaths = getRouteConfigPaths(absPath,fileName);
       
       for (const routePath of allPaths){
         try{
-          accessSync(routePath);
-          // return import(routePath).then(function(component){
-          //   const comRoute = component;
-          //   return comRoute ? {...route,...comRoute} :route;
-          // })
           const comRoute = require(routePath);
           if (comRoute){
             return {...route,...comRoute}

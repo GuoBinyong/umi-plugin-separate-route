@@ -1,5 +1,6 @@
 {
   "name": "umi-plugin-separate-route",
+  "version": "0.0.0",
   "main": "lib/index.js",
   "types": "src/index.ts",
   "description": "通过该插件，你可以将各个组件的路由配置信息，放在组件的旁边的js文件 `[组件文件名].route.js` 中；对于文件名为 `index` 的组件，也可将路由信息放在 `route.js` 中",
@@ -7,7 +8,26 @@
     "name": "郭斌勇",
     "email": "guobinyong@qq.com"
   },
-  "repository": "/umi-plugin-separate-route",
+  "homepage": "https://github.com/GuoBinyong/umi-plugin-separate-route",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GuoBinyong/umi-plugin-separate-route"
+  },
+  "keywords": [
+    "umi",
+    "umijs",
+    "插件",
+    "plugin",
+    "umi plugin",
+    "umi 插件",
+    "umijs plugin",
+    "umi route",
+    "umijs route",
+    "umi 路由",
+    "umijs 路由",
+    "separate route",
+    "分散路由"
+  ],
   "scripts": {
     "start": "cross-env APP_ROOT=example umi dev",
     "build": "father-build",
